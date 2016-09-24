@@ -1,0 +1,10 @@
+<div ng-controller='singlemessageController'>
+<a href="#/user/{{ Message._user._id }}">{{ Message._user.username }}</a> posted a message:
+<br>
+{{ Message.message }}
+	<div ng-if='Message._comments'>
+		<div ng-repeat='x in Message._comments'>
+			{{ x._user }} - {{ x.comment }}
+		</div>
+	</div>
+</div>

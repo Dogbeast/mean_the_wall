@@ -1,0 +1,25 @@
+<div ng-controller='messageController'>
+<br>
+<h1>Message Page</h1>
+Message: <input type="text" ng-model="messageText">
+<br>
+Category: <select ng-model='newCategory'>
+<option value='ruby'>Ruby</option>
+<option value='python'>Python</option>
+<option value='php'>PHP</option>
+</select>
+<button ng-click="createMessage()">Submit Message</button>
+<div ng-if='allMessages'>
+	<div ng-repeat="x in allMessages | orderBy:'-'">
+		<p>{{ x.message }}<p>
+		<input type="text" ng-model="commentText">
+		<button ng-click="createComment(commentText, x._id)">Submit Comment</button>
+		<div ng-if='x._comments'>
+			<div ng-repeat="y in x._comments | orderBy:'-'">
+				<p>-- {{ y.comment }}</p>
+			</div>
+		</div>
+		***************************************************
+	</div>
+</div>
+</div>

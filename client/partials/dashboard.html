@@ -1,0 +1,42 @@
+<div ng-controller='dashboardController'>
+Welcome {{ username }}!
+<br>
+<input type="text" ng-model="searchInput">
+<br>
+<table>
+	<tr>
+		<th>Category</th>
+		<th>Message</th>
+		<th>User Name</th>
+		<th>Comments</th>
+	</tr>
+	<div ng-if='allMessages'>
+	<tr ng-repeat="x in allMessages | orderBy: '-'">
+		<td>
+			{{ x.category }}
+		</td>
+		<td>
+			<a href="#/message/{{ x._id }}">{{ x.message }}</a>
+		</td>
+		<td>
+			<a href="#/user/{{ x._user._id}}">{{ x._user.username}}</a>
+		</td>
+		<td>
+			{{ x._comments.length }}
+		</td>
+	</tr>
+	</div>
+</table>
+<br>
+Add a new Topic:
+<br>
+Topic: <input type="text" ng-model='newTopic'>
+<br>
+Description: <input type="text" ng-model='newDescription'>
+<br>
+Category: <select ng-model='newCategory'>
+<option value='ruby'>Ruby</option>
+<option value='python'>Python</option>
+<option value='php'>PHP</option>
+</select>
+</div>
